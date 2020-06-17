@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <section class="main-container">
+        <div class="input-group">
+            <div class="input-control">
+                <label for="grid-size">Grid Color : </label>
+                <select name="grid-color" id="grid-color">
+                    <option value="000000">Black</option>
+                    <option value="FFFF00">Yellow</option>
+                    <option value="008000">Green</option>
+                    <option value="FF0000">Red</option>
+                    <option value="800080">Violet</option>
+                    <option value="F5F5F5">Erase</option>
+                    <option value="rainbow" selected>Rainbow</option>
+                </select>
+            </div>
+            <div class="input-control">
+                <label for="grid-size">Grid Size : </label>
+                <input type="number" name="grid-size" id="grid-size" min="1" max="105" value="16">
+            </div>
+            <div class="input-control">
+                <button type="reset" onclick="resetGrid();">Reset</button>
+            </div>
+        </div>
+
+
+        <div class="grid-container">
+            <div class="grid center"></div>
+        </div>
+    </section>
+</body>
+<script src="js/index.js"></script>
+</html>

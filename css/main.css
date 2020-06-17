@@ -1,0 +1,31 @@
+body, html {
+    height: 100%;
+    background-color: #f5f5f5;
+}
+.center {
+    margin: 0 auto;
+}
+
+.grid-container {
+    padding-top: 2rem;
+}
+.grid {
+    height: 700px;
+    width: 700px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
+.grid-item {
+    border: 1px solid black;
+}
+
+.main-container {
+    padding-top: 6rem;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-evenly;
+}
