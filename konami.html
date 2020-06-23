@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Key Detection</title>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+
+<style>
+    html {
+        background-color: black;
+    }
+
+    html,
+    body,
+    .hint {
+        height: 100%;
+    }
+
+    .hint {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hint>p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: xx-large;
+        color: #59595996;
+    }
+</style>
+
+<body>
+    <diV class="hint">
+        <p>Konami Code</p>
+    </div>
+</body>
+
+<script>
+    const pressed = [];
+    const secret = 'dingo';
+    window.addEventListener('keyup', (event) => {
+        pressed.push(event.key);
+        console.log(-secret.length - 1, pressed.length - secret.length);
+        pressed.splice(-secret.length - 1, pressed.length - secret.length);
+        if (pressed.join('').includes(secret)) {
+            cornify_add();
+        }
+    });
+    console.info('%c Secret code is: dingo', 'font-size:20px;  background: rgb(63,94,251);background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);');
+</script>
+
+</html>
