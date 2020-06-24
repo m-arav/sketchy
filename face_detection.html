@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Face detection</title>
-    <script src="face-api.min.js"></script>
+    <script defer src="vendor/face-api/face-api.min.js"></script>
+    <script defer src="js/face_detection.js"></script>
     <style>
         body {
+            background-color: black;
             margin: 0;
             padding: 0;
             width: 100vw;
@@ -15,24 +18,15 @@
             align-items: center;
             justify-content: center;
         }
+
+        canvas {
+            position: absolute;
+        }
     </style>
 </head>
+
 <body>
-    <video id="video" width="720" height="560"></video>
+    <video id="video" width="720" height="560" autoplay muted></video>
 </body>
-<script>
 
-const video = document.querySelector('#video');
-
-function startVideo() {
-    navigator.mediaDevices.getUserMedia({},
-    stream => video.srcObject = stream,
-    err => console.error(err)
-    );
-}
-
-startVideo();
-
-
-</script>
 </html>
