@@ -5,7 +5,11 @@ const displaySize = {width: video.width, height: video.height}
 function startVideo() {
     navigator.mediaDevices.getUserMedia({ video: {} })
     .then(stream => video.srcObject = stream)
-    .catch(err => console.error(err));
+    .catch(error => {
+        console.error(error);
+        video.style.display= 'none';
+        document.querySelector('p').style.display = 'block';
+    });
 }
 
 Promise.all([
