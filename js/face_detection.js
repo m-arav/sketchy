@@ -1,14 +1,19 @@
 
 const video = document.querySelector('#video');
+const pTag = document.querySelector('p');
 const displaySize = {width: video.width, height: video.height}
 
 function startVideo() {
+    
     navigator.mediaDevices.getUserMedia({ video: {} })
-    .then(stream => video.srcObject = stream)
+    .then(stream => {
+        video.srcObject = stream;
+        pTag.style.display= 'none';
+        video.style.display = 'block';
+    })
     .catch(error => {
         console.error(error);
-        video.style.display= 'none';
-        document.querySelector('p').style.display = 'block';
+        pTag.innerText = "Oop's I couldn't find your camera";
     });
 }
 
