@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+         }
+
+         body {
+             background-color: dodgerblue;
+             font-family: Arial, Helvetica, sans-serif;
+         }
+
+         .app {
+             display: flex;
+             flex-flow: column;
+             height: 100vh;
+             width: 100vw;
+         }
+
+         header {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             
+         }
+
+         .lists {
+             display: flex;
+             flex: 1;
+             width: 100%;
+             overflow-x: scroll;
+         }
+
+         .list {
+             display: flex;
+             flex-flow: column;
+             flex: 1;
+
+             width: 100%;
+             height: 100%;
+             min-width: 250px;
+             max-width: 350px;
+             min-height: 150px;
+
+             background-color: rgba(0, 0, 0, 0.1);
+             margin: 0 15px;
+             padding: 8px;
+             transition: all 0.2 linear;
+         }
+
+         .list-item {
+             background-color: #f3f3f3;
+             border-radius: 8px;
+             padding: 15px 20px;
+             text-align: center;
+             margin: 4px 0px;
+             cursor: grab;
+         }
+
+         .dragged {
+             background-color: rgba(0, 0, 0, 0.2);
+         }
+
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1>Drag and Drop API</h1>
+        </header>
+        <div class="lists">
+            <div class="list">
+                <div class="list-item" draggable="true">List Item 1</div>
+                <div class="list-item" draggable="true">List Item 4</div>
+                <div class="list-item" draggable="true">List Item 5</div>
+            </div>
+            <div class="list">
+                <div class="list-item" draggable="true">List Item 2</div>
+            </div>
+            <div class="list">
+                <div class="list-item" draggable="true">List Item 3</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const listItems = document.querySelectorAll('.list-item');
+        const lists = document.querySelectorAll('.list');
+
+        let draggedItem = null;
+
+        function handleDragEnd(event) {
+            setTimeout(() => {
+                draggedItem.style.display = 'block';
+                draggedItem = null;
+            }, 0);
+        }
+
+        function handleDragStart(event) {
+            draggedItem = this;
+            setTimeout(() => draggedItem.style.display = 'none', 0);
+        }
+
+        function handleDrop(event) {
+            this.append(draggedItem);
+            this.classList.remove('dragged');
+        }
+
+        function handleDragEnter(event) {
+            event.preventDefault()
+            this.classList.add('dragged');
+        }
+
+        listItems.forEach(item => {
+            item.addEventListener('dragstart', handleDragStart);
+            item.addEventListener('dragend', handleDragEnd);
+
+            lists.forEach(list => {
+                list.addEventListener('dragenter', handleDragEnter);
+                list.addEventListener('dragover', (event) =>  event.preventDefault());
+                list.addEventListener('dragleave', () => list.classList.remove('dragged'));
+                list.addEventListener('drop', handleDrop);
+            })
+        });
+    </script>
+</body>
+</html>
