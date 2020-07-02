@@ -74,9 +74,16 @@ html {
     margin-top: 20px;
   }
   
-  .add-items input {
+  .add-items input, button {
     padding: 10px;
     outline: 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
-  
+
+  .button-group {
+    margin-top: 20px;
+  }
+
+  button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
