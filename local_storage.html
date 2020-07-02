@@ -40,6 +40,9 @@
             <input type="text" name="item" placeholder="Item Name" required>
             <input type="submit" value="+ Add Item">
         </form>
+        <button class="delete-all" onclick="deleteAll(event)">Delete all</button>
+        <button class="clear-all" onclick="toggleAll(event, false)">Clear all</button>
+        <button class="check-all" onclick="toggleAll(event, true)">Check all</button>
     </div>
 
     <script>
@@ -55,8 +58,7 @@
                 done: false
             };
             items.push(item);
-            populateList(items, itemsList);
-            localStorage.setItem('items', JSON.stringify(items));
+            reDrawList();
             this.reset();
         }
 
@@ -76,14 +78,27 @@
             const el = event.target;
             const index = el.dataset.index;
             items[index].done = !items[index].done;
-            populateList(items, itemsList);
-            localStorage.setItem('items', JSON.stringify(items));
+            reDrawList();
         }
-
 
         addItems.addEventListener('submit', addItem);
         itemsList.addEventListener('click', toggleDone);
         populateList(items, itemsList);
+
+        function deleteAll(event) {
+            items.splice(0,items.length);
+            reDrawList();
+        }
+
+        function toggleAll(event, toggle) {
+            items.forEach(item => item.done = toggle);
+            reDrawList();
+        }
+
+        function reDrawList() {
+            populateList(items, itemsList);
+            localStorage.setItem('items', JSON.stringify(items));
+        }
     </script>
 
 
