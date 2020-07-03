@@ -35,7 +35,7 @@
             if (event.results[0].isFinal) {
                 p = document.createElement('p');
                 words.appendChild(p);
-                button.dataset.text = `${button.dataset.text}. ${transcript}`;
+                button.dataset.text = `${button.dataset.text}\n\n${transcript}`;
             }
         });
 
