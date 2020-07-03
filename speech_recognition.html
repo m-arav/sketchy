@@ -11,8 +11,12 @@
     <div class="words" contenteditable>
         Say something!
     </div>
-
+    <div class="container">
+        <button data-text='' class="export" onclick="export_text()" >Export</button>
+    </div>
     <script>
+        const button = document.querySelector('.export');
+
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
         const recognition = new SpeechRecognition();
@@ -27,14 +31,23 @@
                 .map(result => result[0])
                 .map(result => result.transcript).join('');
             p.textContent = transcript;
+           
             if (event.results[0].isFinal) {
                 p = document.createElement('p');
                 words.appendChild(p);
+                button.dataset.text = `${button.dataset.text}. ${transcript}`;
             }
         });
 
         recognition.addEventListener('end', recognition.start);
         recognition.start();
+
+        function export_text() {
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(new Blob([button.dataset.text], {type: "text/plain"}));
+            a.download = 'Transcript';
+            a.click();
+        }
     </script>
 
 
@@ -76,6 +89,10 @@
             bottom: 0;
             border: 1px solid;
             border-color: transparent #efe4e4;
+        }
+        .container {
+            max-width: 100px;
+            margin: 50px auto;
         }
     </style>
 
