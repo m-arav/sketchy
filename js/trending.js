@@ -6,7 +6,7 @@ const result_string = "[{\"name\":\"Smite\",\"thumb_nail\":\"https://dl4y99ver62
         el.className = 'item grid'
         el.innerHTML = `
         <img src="media/drg.jpg" loading="lazy">
-        <h4>${result.name}</h4>
+        <p><b>${result.name}</b></p>
         <p>${result.player_trend}</p>
         `
         //<img src=${result.thumb_nail} >
