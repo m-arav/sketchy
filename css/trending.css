@@ -27,7 +27,6 @@ body {
     max-width: 272px;
     background-color: white;
     border-radius: 8px;
-    transition: transform .2s ease-in;
     box-shadow: 0 .5em 1em -.125em rgba(10,10,10,.1),0 0 0 1px rgba(10,10,10,.02);
 }
 
@@ -35,11 +34,6 @@ body {
     min-height: 380px;
     min-width: 272px;
 }
-
-.item:hover {
-    transform: scale(1.1);
-}
-
   @media only screen and (max-width: 664px) {
     .main-content {
         grid-template-columns: repeat(1, 2fr);
